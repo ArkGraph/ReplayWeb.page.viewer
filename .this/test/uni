@@ -4,4 +4,4 @@
 
   roles:
   - role: this
-  - role: install
+  - role: install/yarn
