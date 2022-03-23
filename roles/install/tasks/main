@@ -1,0 +1,20 @@
+---
+- name: Add Apt signing key
+  ansible.builtin.apt_key:
+    url: https://dl.yarnpkg.com/debian/pubkey.gpg
+    state: present
+  become: true
+
+- name: Add repository
+  ansible.builtin.apt_repository:
+    repo: deb https://dl.yarnpkg.com/debian/ stable main
+    state: present
+    filename: yarn
+  become: true
+
+- name: Install Yarn package
+  apt:
+    pkg:
+    - yarn
+    install_recommends: no
+  become: true
