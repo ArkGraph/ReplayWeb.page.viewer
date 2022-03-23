@@ -1,2 +1,4 @@
 # ReplayWeb.page.viewer
-https://github.com/webrecorder/replayweb.page
+source: https://github.com/webrecorder/replayweb.page
+
+doc: https://replayweb.page/docs/
