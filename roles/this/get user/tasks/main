@@ -2,14 +2,12 @@
 
 - name: get user
   shell: "echo $USER"
-  register: whoami
+  register: iam
+
+- name: available to other roles
+  set_fact:
+    whoami: "{{iam.stdout}}"
 
 - name: debug
   debug:
-    msg: "whoami {{whoami.stdout}}"
-
-- name: example Get artifact
-  get_url:
-    url: "https://github.com/*/{{release}}.tar.gz"
-    dest: "/home/{{whoami.stdout}}/Downloads/"
-
+    msg: "{{whoami}}"
