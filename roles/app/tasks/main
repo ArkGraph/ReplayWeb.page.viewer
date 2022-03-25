@@ -18,6 +18,7 @@
 
 - name: Launcher
   ansible.builtin.template:
-    src: ReplayWeb-page.desktop.j2
+    src: replayWeb-page.desktop.j2
     dest: /usr/share/applications/replayWeb-page.desktop
+    mode: '0644'
   become: true
