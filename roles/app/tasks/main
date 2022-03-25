@@ -1,0 +1,6 @@
+---
+- name: Download foo.conf
+  get_url:
+    url: https://github.com/webrecorder/replayweb.page/releases/download/v1.5.10/ReplayWeb.page-1.5.10.AppImage
+    dest: "/home/{{whoami.stdout}}/.uni/"
+    mode: '5550'
