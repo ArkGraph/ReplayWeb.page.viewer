@@ -1,17 +1,23 @@
 ---
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: "{{dir}}"
+    state: directory
+
 - name: Download AppImage
   get_url:
-    url: https://github.com/webrecorder/replayweb.page/releases/download/v1.5.10/ReplayWeb.page-1.5.10.AppImage
-    dest: "/home/{{whoami}}/.uni/"
-    mode: '0555'
+    url: https://github.com/webrecorder/replayweb.page/releases/download/v{{version}}/ReplayWeb.page-{{version}}.AppImage
+    dest: "{{dir}}"
+    mode: '0755'
 
 
 - name: Download Icon
   get_url:
-    url: https://avatars.githubusercontent.com/u/13686290?s=200&v=4
-    dest: "/home/{{whoami}}/.uni/replayweb-page.png"
+    url: https://raw.githubusercontent.com/webrecorder/replayweb.page/main/assets/logo.svg
+    dest: "{{dir}}/"
 
 - name: Launcher
   ansible.builtin.template:
     src: ReplayWeb-page.desktop.j2
-    dest: /usr/share/applications/ReplayWeb-page.desktop
+    dest: /usr/share/applications/replayWeb-page.desktop
+  become: true
